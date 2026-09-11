@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: georgi-gitops-demo
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: gitops-demo
+  template:
+    metadata:
+      labels:
+        app: gitops-demo
+    spec:
+      containers:
+        - name: nginx
+          image: a40820ab5de324d5fa6f1035631abfb0-1925417406.us-east-1.elb.amazonaws.com/student08/nginx@sha256:0ee3ad542a77edbf8bd220a6ad7a080134eac7b2bb123c4d4b19e06e50a1fc94 
+          ports:
+            - containerPort: 80
